@@ -77,7 +77,7 @@ public partial class SignUpPage : ContentPage
             if (_entryAsPassword != value)
             {
                 _entryAsPassword = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(EntryAsPassword));
             }
         }
     }
@@ -106,7 +106,7 @@ public partial class SignUpPage : ContentPage
 
     private void TogglePasswordButton()
     {
-        PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
+        Passwo.IsPassword = !EntryAsPassword.IsPassword;
         if (EntryAsPassword)
             PasswordIconCode = FontHelper.CLOSED_EYE_ICON;
         else

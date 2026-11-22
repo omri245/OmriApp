@@ -57,7 +57,7 @@
                     FontSize=" 18 "
                     Keyboard="Email"
                     Placeholder="Email"
-                    Text="{Binding UserPassword}"
+                    Text="{Binding UserEmail}"
                     TextColor="Wheat" />
             </Border>
             <Border
@@ -70,10 +70,9 @@
                     ColumnDefinitions="*,Auto"
                     VerticalOptions="Center">
                     <Entry
-                        x:Name="PasswordEntry"
                         BackgroundColor="Transparent"
                         FontSize=" 18 "
-                        IsPassword="True"
+                        IsPassword="{Binding EntryAsPassword}"
                         Placeholder="Password"
                         Text="{Binding UserPassword}"
                         TextColor="Wheat"
@@ -86,7 +85,7 @@
                         FontFamily="MaterialSymbolsFont"
                         FontSize="24"
                         HorizontalOptions="End"
-                        Text="&#xe8f5;"
+                        Text="{Binding PasswordIconCode}"
                         TextColor="White"
                         VerticalOptions="Center" />
                 </Grid>

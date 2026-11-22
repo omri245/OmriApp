@@ -123,7 +123,7 @@ namespace OmriApp.ViewModels
             //Using a lambda expression to define the command action
             ShowPasswordCommand = new Command(() => 
             {
-                if (EntryAsPassword)
+                if (!EntryAsPassword)
                     TogglePasswordButtonText = FontHelper.CLOSED_EYE_ICON;
                 else
                     TogglePasswordButtonText = FontHelper.OPEN_EYE_ICON;
