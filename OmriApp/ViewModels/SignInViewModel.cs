@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using OmriApp.Views;
 
 namespace OmriApp.ViewModels
 {
-    public class SignInViewModel : ViewModelBase //ObservableObject
+    public partial class SignInViewModel : ObservableObject
     {
+        INavigation _navigation;
         private string? _togglePasswordButtonText;
         private string? _userName;
         private string? _password;
@@ -115,12 +118,8 @@ namespace OmriApp.ViewModels
         public ICommand ShowPasswordCommand { get; }
         public ICommand SignInCommand { get; }
 
-
-        public SignInViewModel()
+        public SignInViewModel(INavigation navigation)
         {
-            //ShowPasswordCommand = new Command(OnTugglePasswordButtonClicked);
-
-            //Using a lambda expression to define the command action
             ShowPasswordCommand = new Command(() => 
             {
                 if (!EntryAsPassword)
@@ -134,6 +133,7 @@ namespace OmriApp.ViewModels
 
             TogglePasswordButtonText = FontHelper.CLOSED_EYE_ICON;
 
+            _navigation = navigation;
             EntryAsPassword = true;
             _dBMokup = new DBMokup();
 
@@ -144,6 +144,11 @@ namespace OmriApp.ViewModels
             }
         }
 
+        [RelayCommand]
+        private async void GoToSignUp()
+        {
+            await _navigation.PushAsync(new SignUpPage());
+        }
         void OnSignInButtonClicked()
         {
             if (_dBMokup!.IsExist(UserName, UserPassword))
@@ -164,5 +169,6 @@ namespace OmriApp.ViewModels
         {
             return !(string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(UserPassword));
         }
+
     }
 }

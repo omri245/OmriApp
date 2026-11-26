@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OmriApp.Helpers;
+using OmriApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace OmriApp.ViewModels
 {
     public partial class SignUpPageViewModel : ObservableObject
     {
+        INavigation _navigation;
         private string? _firstName;
         private string? _lastName;
         private string? _email;
@@ -28,9 +30,11 @@ namespace OmriApp.ViewModels
         private string? _errorMessage;
 
         public ICommand? ShowPasswordCommand { get; }
+        public ICommand? GoToSignIpCommand { get; }
 
-        public SignUpPageViewModel()
+        public SignUpPageViewModel(INavigation navigation)
         {
+            GoToSignIpCommand = new Command(async () => await _navigation!.PushAsync(new SignUpPage()));
             EntryAsPassword = true;
             PasswordIconCode = FontHelper.OPEN_EYE_ICON;
             ShowPasswordCommand = new Command(() =>
@@ -41,6 +45,7 @@ namespace OmriApp.ViewModels
                     PasswordIconCode = FontHelper.OPEN_EYE_ICON;
                 EntryAsPassword = !EntryAsPassword;
             });
+            _navigation = navigation;
         }
         [RelayCommand]
         private void SignUp()
@@ -60,6 +65,7 @@ namespace OmriApp.ViewModels
                 //await Shell.Current.DisplayAlert("SignUp",ex.Message, "Cancel");
             }
         }
+
         private bool Validate()
         {
             return true;

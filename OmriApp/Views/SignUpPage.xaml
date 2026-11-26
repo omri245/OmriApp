@@ -22,7 +22,7 @@
                 Text="Create Account"
                 TextColor="White" />
         </HorizontalStackLayout>
-        <VerticalStackLayout Grid.Row=" 1" Grid.Column=" 1">
+        <VerticalStackLayout  Grid.Row=" 1" Grid.Column=" 1">
             <Border Style="{StaticResource FormEntryBorder}">
                 <Entry
                     FontSize=" 18 "
@@ -85,7 +85,9 @@
                 HeightRequest="70"
                 Text="Sign Up"
                 TextColor="White" />
-            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
                 <Label
                     Margin="14,0,0,0"
                     FontSize=" 16 "
@@ -97,6 +99,19 @@
                     FontSize="16"
                     Text=" SignIn"
                     TextColor="BlueViolet" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Label
+                Text="Already have an acount"
+                VerticalOptions="Center">
+                </Label>
+                <Button
+                BackgroundColor="Transparent"
+                Text="Sign in"
+                Command="{Binding GoToSignIpCommand}">
+                </Button>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>

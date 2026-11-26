@@ -11,8 +11,8 @@ namespace OmriApp
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            //return new Window(new AppShell());
-            return new Window(new SignUpPage());
+            var navPage = new NavigationPage(new SignUpPage());
+            return new Window(navPage);
         }
     }
 }

@@ -73,7 +73,21 @@
             TextColor="White"
             Command="{Binding SignInCommand}"/>
 
-        <!-- שגיאה-->
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+        <Label
+            Text="Dont have an acount"
+            VerticalOptions="Center">
+            </Label>
+        <Button
+            BackgroundColor="Transparent"
+            Text="Sign up"
+            Command="{Binding GoToSignUpCommand}">
+        </Button>
+        </HorizontalStackLayout>
+
+            <!-- שגיאה-->
         <Label          
             FontSize="45"
             HorizontalTextAlignment="Center"
